@@ -7,7 +7,7 @@ import {
   sendConnectionRequest,
   respondToConnection,
   withdrawConnectionRequest,
-} from '../../api/connectionapi'
+} from '../../api/connectionApi'
 
 const initialState: ConnectionsState = {
   directory: [],

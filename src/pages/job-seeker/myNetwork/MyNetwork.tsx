@@ -7,7 +7,7 @@ import {
   sendConnectionRequest,
   respondToConnection,
   withdrawConnectionRequest,
-} from '../../../api/connectionapi'
+} from '../../../api/connectionApi'
 import { fetchJobs } from '../../../api/jobApi'
 import type { DirectoryUser, PendingRequest } from '../../../store/connectiontype'
 
