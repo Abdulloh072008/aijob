@@ -126,7 +126,7 @@ export default function MessagePage() {
     formik.resetForm();
   };
 
-  const handleStartNewChat = async (user: any) => {
+  const handleStartNewChat = async (user) => {
     setIsNewChatOpen(false);
     setSearchQuery('');
     const resultAction = await dispatch(createConversation({ participantId: user.id }));
@@ -144,7 +144,7 @@ export default function MessagePage() {
     setActiveConvId(null);
   };
 
-  const resolveUserObj = (conv: any) => {
+  const resolveUserObj = (conv) => {
     const convId = conv.id || conv.conversationId;
     // Prioritize temporary users from search results
     if (convId && tempUsers[convId]) return tempUsers[convId];
@@ -162,7 +162,7 @@ export default function MessagePage() {
 
     // Participants array fallback
     if (conv.participants && Array.isArray(conv.participants)) {
-      const partner = conv.participants.find((p: any) => {
+      const partner = conv.participants.find((p) => {
         const pid = String(p.id || p.userId);
         return pid !== currentUserId;
       });

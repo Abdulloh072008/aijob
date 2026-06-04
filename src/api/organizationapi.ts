@@ -11,7 +11,7 @@ export const fetchOrgProfile = createAsyncThunk(
     try {
       const res = await axiosRequest.get("/api/Organization/mine");
       return res.data;
-    } catch (err: any) {
+    } catch (err) {
       return rejectWithValue(
         err.response?.data?.message || "Profile fetch failed"
       );
@@ -25,7 +25,7 @@ export const fetchOrgProfileById = createAsyncThunk(
     try {
       const res = await axiosRequest.get(`/api/Organization/${id}`);
       return res.data;
-    } catch (err: any) {
+    } catch (err) {
       return rejectWithValue(
         err.response?.data?.message || "Profile ID fetch failed"
       );
@@ -47,7 +47,7 @@ export const fetchOrgJobs = createAsyncThunk(
         "/api/Job/by-organization/mine"
       );
       return res.data;
-    } catch (err: any) {
+    } catch (err) {
       return rejectWithValue(
         err.response?.data?.message || "Job list sync failed"
       );
@@ -82,7 +82,7 @@ export const createJobPost = createAsyncThunk(
         job
       );
       return res.data;
-    } catch (err: any) {
+    } catch (err) {
       return rejectWithValue(
         err.response?.data?.message || "Vacancy posting failed"
       );
@@ -94,13 +94,13 @@ export const createJobPost = createAsyncThunk(
 export const updateJobPost = createAsyncThunk(
   "organization/updateJob",
   async (
-    { id, data }: { id: string; data: any },
+    { id, data }: { id: string; data },
     { rejectWithValue }
   ) => {
     try {
       const res = await axiosRequest.put(`/api/Job/${id}`, data);
       return res.data;
-    } catch (err: any) {
+    } catch (err) {
       return rejectWithValue(
         err.response?.data?.message || "Job update failed"
       );
@@ -121,7 +121,7 @@ export const fetchOrgApplicants = createAsyncThunk(
         "/api/JobApplication/by-organization/mine"
       );
       return res.data;
-    } catch (err: any) {
+    } catch (err) {
       return rejectWithValue(
         err.response?.data?.message || "Applicants sync failed"
       );
@@ -137,7 +137,7 @@ export const fetchOrgApplicants = createAsyncThunk(
 export const updateOrgProfile = createAsyncThunk(
   "organization/updateProfile",
   async (
-    { id, data }: { id: string; data: any },
+    { id, data }: { id: string; data },
     { rejectWithValue }
   ) => {
     try {
@@ -146,7 +146,7 @@ export const updateOrgProfile = createAsyncThunk(
         data
       );
       return res.data;
-    } catch (err: any) {
+    } catch (err) {
       return rejectWithValue(
         err.response?.data?.message || "Profile update failed"
       );
@@ -167,7 +167,7 @@ export const deleteJobPost = createAsyncThunk(
         `/api/Job/${id}` // ✅ FIXED (not JobApplication)
       );
       return res.data || id;
-    } catch (err: any) {
+    } catch (err) {
       return rejectWithValue(
         err.response?.data?.message || "Job delete failed"
       );
@@ -196,7 +196,7 @@ export const updateApplicantStatus = createAsyncThunk(
         applicantId: id,
         status: res.data?.status || status,
       };
-    } catch (err: any) {
+    } catch (err) {
       return rejectWithValue(
         err.response?.data?.message || "Status change failed"
       );
